@@ -2,7 +2,7 @@ Package: CompBioTools
 Type: Package
 Title: Computational Biology Tools
 Author: Carlos Henrique Fantecelle
-Version: 0.0.1.0
+Version: 0.0.1.1
 RoxygenNote: 7.2.1
 Encoding: UTF-8
 Imports:
