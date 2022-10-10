@@ -4,15 +4,17 @@
 \alias{geneCheck}
 \title{Check DESeq2 results}
 \usage{
-geneCheck(results_list, genes_df)
+geneCheck(results_list, genes_df, from = "deseq2")
 }
 \arguments{
-\item{results_list}{A named list containing 'DESeqResults' objects.}
+\item{results_list}{A named list containing results objects from DE pipelines.}
 
-\item{genes_df}{A dataframe of genes of interest where the column with gene symbols is named 'hgnc_symbol'.}
+\item{genes_df}{A dataframe of genes of interest where the column with gene symbols is named \code{hgnc_symbol}.}
+
+\item{from}{If the results came from \code{'deseq2'} or \code{'limma'}. Default = \code{'deseq2'}}
 }
 \value{
-The function check every gene of genes_df against each of the results and aggregates log2 fold changes and adjusted p-values into a single data.frame for each result of the list. Results are rounded to two digits.
+The function check every gene of \code{genes_df} against each of the results and aggregates log2 fold changes and adjusted p-values into a single data.frame for each result of the list. Results are rounded to two digits.
 }
 \description{
 Compares results from DESeq2 and a predefined dataframe with previously selected genes for analysis.
