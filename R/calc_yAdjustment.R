@@ -35,21 +35,24 @@ calc_yAdjustment <- function(values_df,
 #' @param base_var_annot Name of the base grouping variable (column) in the annotation dataframe. This is the group of the reference level. Default value: "Group1".
 #' @param stats_col Name of the statistics variable (column) in the annotation dataframe. Default value: "padj".
 #' @param k Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.
+#' @param decrease Integer number to subtract from total number of comparisons. This is for use in case you are plotting stats for less than the maximum amount of comparisons between the groups. Default is `0`.
 #' @return The same values_df with an extra column called 'yadjustment' with y axis values.
 #' @export
 calc_yAdjustment2 <- function(annotation_df,
                               values_df,
-                              values_col,
-                              facet_var_value,
-                              facet_var_annot,
-                              group_var_annot,
-                              base_var_annot,
-                              stats_col,
-                              k) {
+                              values_col = "Expression",
+                              facet_var_value = "Gene",
+                              facet_var_annot = "Gene",
+                              group_var_annot = "Group2",
+                              base_var_annot = "Group1",
+                              stats_col = "padj",
+                              k,
+                              decrease = 0) {
   
   annotation_df$yposition <- 0
   
   index <- 1:choose(length(unique(c(annotation_df[[group_var_annot]],annotation_df[[base_var_annot]]))),2)
+  index <- index[1:length(index)-decrease]
   names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_vs_"))
   
   index_list <- list()

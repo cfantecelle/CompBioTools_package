@@ -7,13 +7,14 @@
 calc_yAdjustment2(
   annotation_df,
   values_df,
-  values_col,
-  facet_var_value,
-  facet_var_annot,
-  group_var_annot,
-  base_var_annot,
-  stats_col,
-  k
+  values_col = "Expression",
+  facet_var_value = "Gene",
+  facet_var_annot = "Gene",
+  group_var_annot = "Group2",
+  base_var_annot = "Group1",
+  stats_col = "padj",
+  k,
+  decrease = 0
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ calc_yAdjustment2(
 \item{stats_col}{Name of the statistics variable (column) in the annotation dataframe. Default value: "padj".}
 
 \item{k}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
+
+\item{decrease}{Integer number to subtract from total number of comparisons. This is for use in case you are plotting stats for less than the maximum amount of comparisons between the groups. Default is \code{0}.}
 }
 \value{
 The same values_df with an extra column called 'yadjustment' with y axis values.
