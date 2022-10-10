@@ -72,14 +72,14 @@ calc_yPosition2 <- function(annotation_df,
     
     index <- 1:choose(length(unique(c(annotation_df[[group_var_annot]],annotation_df[[base_var_annot]]))),2)
     index <- index[1:length(index)-decrease]
-    names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_"))
+    names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_vs_"))
     message("The order of the groupings is as follows:\n")
     print(index)
     
   } else {
     
     index <- 1:length(unique(annotation_df[[group_var_annot]]))
-    names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_"))
+    names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_vs_"))
     message("The order of the groupings is as follows:\n")
     print(index)
     
@@ -95,8 +95,8 @@ calc_yPosition2 <- function(annotation_df,
     
     for (comparison in groups) {
       
-      group <- strsplit(comparison, "_")[[1]][1]
-      base <- strsplit(comparison, "_")[[1]][2]
+      group <- strsplit(comparison, "_vs_")[[1]][1]
+      base <- strsplit(comparison, "_vs_")[[1]][2]
       
       stats_value <- annotation_df[annotation_df[[facet_var_annot]]==facet_var&annotation_df[[group_var_annot]]==group&annotation_df[[base_var_annot]]==base,stats_col]
       
@@ -127,7 +127,7 @@ calc_yPosition2 <- function(annotation_df,
     # Extracting group comparison and facet ver
     group1 <- annotation_df[i, base_var_annot]
     group2 <- annotation_df[i, group_var_annot]
-    group <- paste(group2, group1, sep = "_")
+    group <- paste(group2, group1, sep = "_vs_")
     
     facet_var <- annotation_df[i, facet_var_annot]
     
