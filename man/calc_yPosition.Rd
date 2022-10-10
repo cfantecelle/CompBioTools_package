@@ -11,7 +11,7 @@ calc_yPosition(
   facet_var_value,
   facet_var_annot,
   group_var_annot,
-  constant
+  k
 )
 }
 \arguments{
@@ -27,7 +27,7 @@ calc_yPosition(
 
 \item{group_var_annot}{Name of the grouping variable (column) in the annotation dataframe.}
 
-\item{constant}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
+\item{k}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
 }
 \value{
 The same annotation_df with an extra column called 'yposition' with y axis values.

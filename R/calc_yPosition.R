@@ -9,7 +9,7 @@
 #' @param facet_var_value Name of the facet variable (column) in the values dataframe.
 #' @param facet_var_annot Name of the facet variable (column) in the annotation dataframe.
 #' @param group_var_annot Name of the grouping variable (column) in the annotation dataframe.
-#' @param constant Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.
+#' @param k Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.
 #' @return The same annotation_df with an extra column called 'yposition' with y axis values.
 #' @export
 calc_yPosition <- function(annotation_df,
@@ -18,7 +18,7 @@ calc_yPosition <- function(annotation_df,
                            facet_var_value,
                            facet_var_annot,
                            group_var_annot, 
-                           constant) {
+                           k) {
   
   annotation_df$yposition <- 0
   
@@ -29,7 +29,7 @@ calc_yPosition <- function(annotation_df,
   
   for (i in 1:length(annotation_df[[facet_var_annot]])) {
     group <- annotation_df[[group_var_annot]][i]
-    annotation_df$yposition[i] <- max(values_df[[values_col]][values_df[[facet_var_value]]==annotation_df[[facet_var_annot]][i]]) + (constant * index[[group]])
+    annotation_df$yposition[i] <- max(values_df[[values_col]][values_df[[facet_var_value]]==annotation_df[[facet_var_annot]][i]]) + (k * index[[group]])
   }
   
   return(annotation_df)
@@ -51,7 +51,7 @@ calc_yPosition <- function(annotation_df,
 #' @param group_var_annot Name of the grouping variable (column) in the annotation dataframe. Default value: "Group2".
 #' @param base_var_annot Name of the base grouping variable (column) in the annotation dataframe. This is the group of the reference level. Default value: "Group1".
 #' @param stats_col Name of the statistics variable (column) in the annotation dataframe. Default value: "padj".
-#' @param constant Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.
+#' @param k Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.
 #' @param decrease Integer number to subtract from total number of comparisons. This is for use in case you are plotting stats for less than the maximum amount of comparisons between the groups. Default is `0`.
 #' @return The same annotation_df with an extra column called 'yposition' with y axis values.
 #' @export
@@ -63,14 +63,14 @@ calc_yPosition2 <- function(annotation_df,
                             group_var_annot = "Group2",
                             base_var_annot = "Group1",
                             stats_col = "padj",
-                            constant,
+                            k,
                             decrease = 0) {
   
   annotation_df$yposition <- 0
   
   if (length(unique(annotation_df[[base_var_annot]])) > 1) {
     
-    index <- 1:choose(length(unique(c(annotation_df[[group_var_annot]],annotation_df[[base_var_annot]]))),2)
+    index <- 1:choose(length(unique(c(annotation_df[[group_var_annot]],annotation_df[[base_var_annot]]))),2) - decrease
     names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_"))
     message("The order of the groupings is as follows:\n")
     print(index)
@@ -133,7 +133,7 @@ calc_yPosition2 <- function(annotation_df,
     # Calculating y position of brackets
     if (length(index_list[[facet_var]][group]) > 0) {
       
-      annotation_df$yposition[i] <- max(values_df[values_df[facet_var_value]==facet_var,values_col]) + (constant * index_list[[facet_var]][group])
+      annotation_df$yposition[i] <- max(values_df[values_df[facet_var_value]==facet_var,values_col]) + (k * index_list[[facet_var]][group])
       
     } else {
       
@@ -146,7 +146,7 @@ calc_yPosition2 <- function(annotation_df,
   values_df$yadj <- 0
   
   for (facet in unique(values_df[[facet_var_annot]])) {
-    values_df[values_df[[facet_var_annot]]==facet, "yadj"] <- max(values_df[values_df[facet_var_value]==facet_var,values_col]) + constant + (constant * length(index_list[[facet]]))
+    values_df[values_df[[facet_var_annot]]==facet, "yadj"] <- max(values_df[values_df[facet_var_value]==facet_var,values_col]) + k + (k * length(index_list[[facet]]))
   }
   
   return(annotation_df)
