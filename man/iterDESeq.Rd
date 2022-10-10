@@ -18,11 +18,11 @@ The same DESeq object after running all the functions above.
 Runs DESeq2 with the different maximum iterations value.
 }
 \details{
-This function executes the same steps executed by the `DESeq2()` wrapper function, allowing you to change the maximum iterations value. These steps are:
+This function executes the same steps executed by the \code{DESeq2()} wrapper function, allowing you to change the maximum iterations value. These steps are:
 
-`dds <- estimateSizeFactors(dds)`
-`dds <- estimateDispersions(dds)`
-`dds <- nbinomWaldTest(dds, maxit = n)`
+\code{dds <- estimateSizeFactors(dds)}
+\code{dds <- estimateDispersions(dds)}
+\code{dds <- nbinomWaldTest(dds, maxit = n)}
 
-Where `n` will be the chosen maximum iterations number in this function's `maxit` parameter.
+Where \code{n} will be the chosen maximum iterations number in this function's \code{maxit} parameter.
 }

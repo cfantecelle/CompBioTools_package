@@ -3,10 +3,11 @@ Type: Package
 Title: Computational Biology Tools
 Author: Carlos Henrique Fantecelle
 Version: 0.0.1.1
-RoxygenNote: 7.2.1
 Encoding: UTF-8
 Imports:
         tidyverse,
         reshape2,
         limma,
         DESeq2
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1

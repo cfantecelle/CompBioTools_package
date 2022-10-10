@@ -10,5 +10,5 @@
 True/False.
 }
 \description{
-The reverse of the `%in%` in operator. Tells if a value is not present in another set o values.
+The reverse of the \code{\%in\%} in operator. Tells if a value is not present in another set o values.
 }
