@@ -7,7 +7,9 @@
 #' This function executes the same steps executed by the `DESeq2()` wrapper function, allowing you to change the maximum iterations value. These steps are:
 #' 
 #' `dds <- estimateSizeFactors(dds)`
+#' 
 #' `dds <- estimateDispersions(dds)`
+#' 
 #' `dds <- nbinomWaldTest(dds, maxit = n)`
 #' 
 #' Where `n` will be the chosen maximum iterations number in this function's `maxit` parameter.

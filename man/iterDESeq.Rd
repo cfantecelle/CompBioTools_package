@@ -21,7 +21,9 @@ Runs DESeq2 with the different maximum iterations value.
 This function executes the same steps executed by the \code{DESeq2()} wrapper function, allowing you to change the maximum iterations value. These steps are:
 
 \code{dds <- estimateSizeFactors(dds)}
+
 \code{dds <- estimateDispersions(dds)}
+
 \code{dds <- nbinomWaldTest(dds, maxit = n)}
 
 Where \code{n} will be the chosen maximum iterations number in this function's \code{maxit} parameter.
