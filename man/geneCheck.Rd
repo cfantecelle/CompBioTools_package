@@ -17,5 +17,5 @@ geneCheck(results_list, genes_df, from = "deseq2")
 The function check every gene of \code{genes_df} against each of the results and aggregates log2 fold changes and adjusted p-values into a single data.frame for each result of the list. Results are rounded to two digits.
 }
 \description{
-Compares results from DESeq2 and a predefined dataframe with previously selected genes for analysis.
+Compares results from differential expression analysis and a data.frame with previously selected genes for analysis.
 }

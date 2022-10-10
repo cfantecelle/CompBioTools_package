@@ -1,6 +1,6 @@
 #' Check DESeq2 results
 #'
-#' Compares results from DESeq2 and a predefined dataframe with previously selected genes for analysis.
+#' Compares results from differential expression analysis and a data.frame with previously selected genes for analysis.
 #' @param results_list A named list containing results objects from DE pipelines.
 #' @param genes_df A dataframe of genes of interest where the column with gene symbols is named `hgnc_symbol`.
 #' @param from If the results came from `'deseq2'` or `'limma'`. Default = `'deseq2'`
