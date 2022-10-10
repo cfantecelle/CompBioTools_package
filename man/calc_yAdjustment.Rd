@@ -4,7 +4,7 @@
 \alias{calc_yAdjustment}
 \title{Calculate y axis adjustment (two comparisons only)}
 \usage{
-calc_yAdjustment(values_df, values_col, facet_var_value, constant)
+calc_yAdjustment(values_df, values_col, facet_var_value, k)
 }
 \arguments{
 \item{values_df}{'Melted' dataframe (long format) containing the actual values that will be plotted.}
@@ -13,7 +13,7 @@ calc_yAdjustment(values_df, values_col, facet_var_value, constant)
 
 \item{facet_var_value}{Name of the facet variable (column) in the values dataframe.}
 
-\item{constant}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
+\item{k}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
 }
 \value{
 The same values_df with an extra column called 'yadjustment' with y axis values.

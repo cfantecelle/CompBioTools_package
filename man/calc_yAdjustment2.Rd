@@ -13,7 +13,7 @@ calc_yAdjustment2(
   group_var_annot,
   base_var_annot,
   stats_col,
-  constant
+  k
 )
 }
 \arguments{
@@ -33,7 +33,7 @@ calc_yAdjustment2(
 
 \item{stats_col}{Name of the statistics variable (column) in the annotation dataframe. Default value: "padj".}
 
-\item{constant}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
+\item{k}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
 }
 \value{
 The same values_df with an extra column called 'yadjustment' with y axis values.
