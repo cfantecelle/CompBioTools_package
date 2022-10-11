@@ -52,7 +52,7 @@ calc_yAdjustment2 <- function(annotation_df,
   annotation_df$yposition <- 0
   
   index <- 1:choose(length(unique(c(annotation_df[[group_var_annot]],annotation_df[[base_var_annot]]))),2)
-  index <- index[1:length(index)-decrease]
+  index <- index[1:(length(index)-decrease)]
   names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_vs_"))
   
   index_list <- list()

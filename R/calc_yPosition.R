@@ -71,7 +71,7 @@ calc_yPosition2 <- function(annotation_df,
   if (length(unique(annotation_df[[base_var_annot]])) > 1) {
     
     index <- 1:choose(length(unique(c(annotation_df[[group_var_annot]],annotation_df[[base_var_annot]]))),2)
-    index <- index[1:length(index)-decrease]
+    index <- index[1:(length(index)-decrease)]
     names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_vs_"))
     message("The order of the groupings is as follows:\n")
     print(index)
