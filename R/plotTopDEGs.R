@@ -79,6 +79,10 @@ plotTopDEGs <- function(results,
     # Trimming rownames for plotting
     require(strex, quietly = TRUE)
     rownames(counts_matrix) <- str_before_nth(rownames(counts_matrix), ' / ', 2)
+    for (res in names(res_topN)) {
+      rownames(res_topN[[res]]) <- str_before_nth(rownames(res_topN[[res]]), ' / ', 2)
+    }
+    
     message('Warning: rownames are trimmed to first 2 genes for improved plotting when one microarray probe matches multiple genes.')
     
     # Subsetting matrix
