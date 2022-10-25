@@ -77,9 +77,8 @@ plotTopDEGs <- function(results,
     res_topN <- res_topN %>% map(function(x) { x[1:n_genes, , drop = F]})
     
     # Trimming rownames for plotting
-    rownames(counts_matrix) <- strtrim(rownames(counts_matrix), 12)
-    message('Warning: rownames are trimmed to 12 character length for 
-            improved plotting when one microarray probe matches multiple genes.')
+    rownames(counts_matrix) <- str_before_nth(rownames(counts_matrix), ' / ', 2)
+    message('Warning: rownames are trimmed to first 2 genes for improved plotting when one microarray probe matches multiple genes.')
     
     # Subsetting matrix
     matrices <- list()
