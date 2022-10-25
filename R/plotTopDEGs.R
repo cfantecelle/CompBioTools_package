@@ -98,7 +98,7 @@ plotTopDEGs <- function(results,
     for (res in names(results)) {
       
       # Creating col_function
-      col_fun <- colorRamp2(c(min(matrices[[res]]), 0, max(matrices[[res]])),
+      col_fun <- colorRamp2(c(min(matrices), 0, abs(min(matrices))),
                             c("#00c7ff", "#000000", "#fff300"))
       
       # Creating annotation df
