@@ -76,6 +76,11 @@ plotTopDEGs <- function(results,
     # Chopping
     res_topN <- res_topN %>% map(function(x) { x[1:n_genes, , drop = F]})
     
+    # Trimming rownames for plotting
+    rownames(counts_matrix) <- strtrim(rownames(counts_matrix), 12)
+    message('Warning: rownames are trimmed to 12 character length for 
+            improved plotting when one microarray probe matches multiple genes.')
+    
     # Subsetting matrix
     matrices <- list()
     
@@ -107,7 +112,7 @@ plotTopDEGs <- function(results,
                                            annotation_name_align = TRUE,
                                            show_legend = TRUE)
       
-      hm_temp <- Heatmap(matrices[[res]], name = "Expression",
+      hm_temp <- Heatmap(matrices[[res]], name = res,
                          column_title = "",
                          column_title_gp = gpar(fontsize = 12, fontface = "bold"),
                          row_names_gp = gpar(fontsize = 10, fontface = "italic"),
