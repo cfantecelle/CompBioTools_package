@@ -27,7 +27,7 @@ calc_yPosition(
 
 \item{group_var_annot}{Name of the grouping variable (column) in the annotation dataframe.}
 
-\item{k}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
+\item{k}{Proportion value (of the max value in plot) to be added for distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
 }
 \value{
 The same annotation_df with an extra column called 'yposition' with y axis values.

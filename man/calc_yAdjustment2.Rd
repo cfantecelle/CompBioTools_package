@@ -34,7 +34,7 @@ calc_yAdjustment2(
 
 \item{stats_col}{Name of the statistics variable (column) in the annotation dataframe. Default value: "padj".}
 
-\item{k}{Constant value to be added for a standard distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
+\item{k}{Proportion value (of the max value in plot) to be added for distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
 
 \item{decrease}{Integer number to subtract from total number of comparisons. This is for use in case you are plotting stats for less than the maximum amount of comparisons between the groups. Default is \code{0}.}
 }
