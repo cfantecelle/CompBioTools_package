@@ -96,7 +96,7 @@ calc_yAdjustment2 <- function(annotation_df,
   
   for (facet in unique(values_df[[facet_var_annot]])) {
     max_value <- max(values_df[values_df[facet_var_value]==facet,values_col])
-    values_df[values_df[[facet_var_annot]]==facet, "yadj"] <- max_value + (k * max_value * (length(index_list[[facet]])+1))
+    values_df[values_df[[facet_var_annot]]==facet, "yadj"] <- max_value + (k * max_value * length(index_list[[facet]]))
   }
   
   return(values_df)

@@ -140,8 +140,6 @@ calc_yPosition2 <- function(annotation_df,
       
       max_value <- max(values_df[values_df[facet_var_value]==facet_var,values_col])
       
-      
-      
       if (annotation_df[i, stats_col] < alpha) {
         
         annotation_df$yposition[i] <- max_value + (k * max_value * index_list[[facet_var]][group])
