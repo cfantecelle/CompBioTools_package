@@ -54,7 +54,6 @@ calc_yPosition <- function(annotation_df,
 #' @param stats_col Name of the statistics variable (column) in the annotation dataframe. Default value: "padj".
 #' @param alpha Significance threshold.
 #' @param k Proportion value (of the max value in plot) to be added for distance between the brackets. Adjust according to expression values and number of statistical comparisons.
-#' @param decrease Integer number to subtract from total number of comparisons. This is for use in case you are plotting stats for less than the maximum amount of comparisons between the groups. Default is `0`.
 #' @return The same annotation_df with an extra column called 'yposition' with y axis values.
 #' @export
 calc_yPosition2 <- function(annotation_df,
@@ -66,15 +65,14 @@ calc_yPosition2 <- function(annotation_df,
                             base_var_annot = "Group1",
                             stats_col = "padj",
                             alpha = 0.05,
-                            k,
-                            decrease = 0) {
+                            k) {
   
   annotation_df$yposition <- 0
   
   if (length(unique(annotation_df[[base_var_annot]])) > 1) {
     
     index <- 1:choose(length(unique(c(annotation_df[[group_var_annot]],annotation_df[[base_var_annot]]))),2)
-    index <- index[1:(length(index)-decrease)]
+    index <- index[1:(length(index))]
     names(index) <- unique(paste(annotation_df[[group_var_annot]], annotation_df[[base_var_annot]], sep = "_vs_"))
     message("The order of the groupings is as follows:\n")
     print(index)
@@ -103,7 +101,7 @@ calc_yPosition2 <- function(annotation_df,
       
       stats_value <- annotation_df[annotation_df[[facet_var_annot]]==facet_var&annotation_df[[group_var_annot]]==group&annotation_df[[base_var_annot]]==base,stats_col]
       
-      if (stats_value > 0.05) {
+      if ((stats_value > 0.05 | is.na(stats_value))) {
         
         index_list[[facet_var]] <- index_list[[facet_var]][names(index_list[[facet_var]]) != comparison]
         
@@ -140,7 +138,7 @@ calc_yPosition2 <- function(annotation_df,
       
       max_value <- max(values_df[values_df[facet_var_value]==facet_var,values_col])
       
-      if (annotation_df[i, stats_col] < alpha) {
+      if ((annotation_df[i, stats_col] < alpha & !is.na(annotation_df[i, stats_col]))) {
         
         annotation_df$yposition[i] <- max_value + (k * max_value * index_list[[facet_var]][group])
       

@@ -14,8 +14,7 @@ calc_yPosition2(
   base_var_annot = "Group1",
   stats_col = "padj",
   alpha = 0.05,
-  k,
-  decrease = 0
+  k
 )
 }
 \arguments{
@@ -38,8 +37,6 @@ calc_yPosition2(
 \item{alpha}{Significance threshold.}
 
 \item{k}{Proportion value (of the max value in plot) to be added for distance between the brackets. Adjust according to expression values and number of statistical comparisons.}
-
-\item{decrease}{Integer number to subtract from total number of comparisons. This is for use in case you are plotting stats for less than the maximum amount of comparisons between the groups. Default is \code{0}.}
 }
 \value{
 The same annotation_df with an extra column called 'yposition' with y axis values.
