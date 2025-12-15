@@ -57,7 +57,7 @@ calc_yAdjustment2 <- function(annotation_df,
   
   for (i in 1:length(unique(annotation_df[[facet_var_annot]]))) {
     
-    facet_var <- unique(annotation_df[[facet_var_annot]])[i]
+    facet_var <- as.character(unique(annotation_df[[facet_var_annot]])[[i]])
     index_list[[facet_var]] <- index
     groups <- names(index)
     
